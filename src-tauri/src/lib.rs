@@ -54,14 +54,14 @@
 //             stop_bits: StopBits::One,
 //             timeout: Duration::from_millis(1500),
 //         };
-    
+
 //         // シリアルポートを開く
 //         let mut port = serialport::open_with_settings(&port_name, &settings)
 //             .map_err(|e| format!("Failed to open serial port: {}", e))?;
-        
+
 //         // 音楽再生情報を受信するためのバッファ
 //         let mut buffer = [0; 5]; // 最大5バイトのバッファ
-        
+
 //         /*
 //         フラッシュ表示用の機能[flash]
 //          */
@@ -77,14 +77,14 @@
 //         // stdout.execute(cursor::MoveTo(0, 3)).unwrap();
 //         // println!("Velocity: ");
 //         // stdout.flush().unwrap();
-        
+
 //         loop {
 //             // データを読み込む
 //             match port.read_exact(&mut buffer) {
 //                 Ok(_) => {
 //                     // 受信したデータを16進数でログに表示
 //                     println!("Received playback info (hex): {:02x?}", buffer);
-        
+
 //                     //let data_width = u8::from_le(buffer[0] & 0x0F);
 //                     let flag_a = u8::from_le((buffer[1] >> 4) & 0x0F);
 //                     let chanel = u8::from_le(buffer[1] & 0x0F);
