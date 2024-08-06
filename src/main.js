@@ -1,5 +1,6 @@
 const { invoke } = window.__TAURI__.tauri;
 let playbackListenerId = null;
+let portName = "/dev/pts/4"; //デフォルトのシリアルポート名
 
 // Tauri関数名を指定
 let tauriFunctionName = 'send_file_size'; // 本番用
@@ -34,6 +35,32 @@ function switchMain() {
         playbackListenerId = null;
     }
 }
+
+// シリアルポート設定ボタンのクリックイベントリスナーを追加
+document.getElementById('setSerialPortButton').addEventListener('click', () => {
+    const serialPortInput = document.getElementById('serialPortInput').value;
+    if (serialPortInput) {
+        portName = serialPortInput; // ポート名を更新
+        console.log(`Serial port set to: ${portName}`); // デバッグ用ログ
+    } else {
+        console.error("Invalid serial port input.");
+    }
+});
+
+// Disconnectボタンのクリックイベントリスナーを追加
+document.getElementById('disconnectButton').addEventListener('click', async () => {
+    try {
+        // Rust側のdisconnect関数を呼び出す
+        await invoke('disconnect');
+        console.log('Serial port disconnected successfully');
+        const consoleArea = document.getElementById('console');
+        consoleArea.value += 'Serial port disconnected successfully\n';
+    } catch (error) {
+        console.error(`Error during disconnect: ${error}`);
+        const consoleArea = document.getElementById('console');
+        consoleArea.value += `Error during disconnect: ${error}\n`;
+    }
+});
 
 // ファイル選択ダイアログを開く関数
 function openFile() {
@@ -130,7 +157,6 @@ document.getElementById('sendButton').addEventListener('click', async () => {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
     const contents = await readFileAsArrayBuffer(file);
-    const portName = "/dev/pts/2"; // シリアルポート名を指定（適宜変更）
     console.log('Data send clicked');
 
     // イベントリスナーを設定
@@ -168,10 +194,17 @@ document.getElementById('sendButton').addEventListener('click', async () => {
                     console.warn(`Unknown event type: ${data}`);
                 }
                 // ピアノロールアップデート
-                updatePianoRoll(data);
+                // updatePianoRoll(data);
             } else if (Array.isArray(data)) {
-                console.log(`Array event received: ${JSON.stringify(data)}`);
+                // console.log(`Array event received: ${JSON.stringify(data)}`);
                 // Arrayの処理（必要に応じて）
+                let dst = parse_event_msg(data[0], data[1], null);
+                if(dst !== null) {
+                  if(dst.tempo !== 0) {
+                    updateTempo(dst);
+                  }
+                  updatePianoRoll(dst);
+                }
             } else {
                 console.warn(`Unexpected data type: ${typeof data}`);
             }

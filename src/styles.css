@@ -1,157 +1,209 @@
 body {
-    font-family: 'Arial', sans-serif;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+	font-family: 'Arial', sans-serif;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f0f0f0;
 }
 
 .container {
-    width: 960px;
-    height: 700px;
-    background: rgba(255, 255, 255, 0.8); /* コンテナを透過させる */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+	width: 960px;
+	height: 700px;
+	background: rgba(255, 255, 255, 0.8);
+	/* コンテナを透過させる */
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
 }
 
 .container::before {
-    content: "";
-    background: url('assets/miqs.png') no-repeat center center;
-    background-size: cover;
-    opacity: 1; /* 画像を透けさせる */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+	content: "";
+	background: url('assets/miqs.png') no-repeat center center;
+	background-size: cover;
+	opacity: 1;
+	/* 画像を透けさせる */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
 
 header {
-    background: linear-gradient(90deg, rgba(58,123,213,1) 0%, rgba(58,213,174,1) 100%);
-    padding: 20px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+	background: linear-gradient(90deg, rgba(58, 123, 213, 1) 0%, rgba(58, 213, 174, 1) 100%);
+	padding: 20px;
+	text-align: center;
+	color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 }
 
 .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .header-container .logo {
-    width: 50px;
-    height: 40px;
-    margin-right: 10px;
+	width: 50px;
+	height: 40px;
+	margin-right: 10px;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 1.5em;
+	margin: 0;
+	font-size: 1.5em;
 }
 
 
 
 .content-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin: 20px;
 }
 
 h1 {
-    font-size: 2em;
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-    margin: 12px 0;
+	font-size: 2em;
+	text-align: center;
+	font-weight: bold;
+	color: #333;
+	margin: 12px 0;
 }
 
 h2 {
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 20px;
+	font-size: 1.2em;
+	text-align: center;
+	margin-top: 20px;
 }
 
 input[type="file"] {
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 80%;
+	display: block;
+	margin: 20px auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 80%;
 }
 
 button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-top: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	transition: background-color 0.3s;
 }
 
 button#sendButton {
-    background-color: #1d5ea8 !important;
-    cursor: not-allowed;
+	background-color: #1d5ea8 !important;
+	cursor: not-allowed;
 }
 
 button:hover {
-    opacity: 0.8;
+	opacity: 0.8;
 }
 
 textarea {
-    display: block;
-    max-width: 100%;
-    width: 80%;
-    height: 80px;
-    margin: 10px auto;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow-y: auto;
-    font-family: monospace;
-    resize: none;
+	display: block;
+	max-width: 100%;
+	width: 80%;
+	height: 80px;
+	margin: 10px auto;
+	padding: 10px;
+	background-color: #f4f4f4;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow-y: auto;
+	font-family: monospace;
+	resize: none;
 }
 
 #fileSize {
-  text-align: center;
+	text-align: center;
 }
 
 #pianoRoll {
-    display: block;
-    margin: 10px auto;
-    width: 100%; /* キャンバスの幅を親要素に合わせる */
-    height: auto; /* キャンバスの高さを自動調整 */
+	display: block;
+	margin: 10px auto;
+	width: 100%;
+	/* キャンバスの幅を親要素に合わせる */
+	height: auto;
+	/* キャンバスの高さを自動調整 */
 }
 
 #player {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 60px); /* プレイヤーセクションの高さを調整 */
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100% - 60px);
+	/* プレイヤーセクションの高さを調整 */
 }
 
 #tempoDisplay {
-    position: absolute;
-    top: 40px;
-    right: 120px;
-    width: 120px;
+	position: absolute;
+	top: 40px;
+	right: 120px;
+	width: 120px;
+}
+
+/* 以下、シリアルポート選択　*/
+
+#serialPortSelector {
+	margin: 20px auto;
+	text-align: center;
+}
+
+#serialPortSelector label {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+}
+
+#serialPortInput {
+	padding: 10px;
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1em;
+	margin-bottom: 10px;
+}
+
+#setSerialPortButton {
+	background-color: #4CAF50;
+	/* 緑色 */
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+#setSerialPortButton:hover {
+	background-color: #45a049;
+	/* マウスオーバー時に少し暗くする */
+}
+
+/*以下disconnectボタン*/
+#disconnectButton {
+	background-color: #f44336;
+	/* 赤色 */
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+#disconnectButton:hover {
+	background-color: #e31b0c;
+	/* マウスオーバー時に少し暗くする */
 }

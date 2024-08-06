@@ -20,6 +20,14 @@
 
 
         <div id="main">
+			<!--シリアルポートUI-->
+			<div id="serialPortSelector" class="content-card">
+				<label for="serialPortInput">Serial Port:</label>
+				<input type="text" id="serialPortInput" placeholder="/dev/pts/4">
+				<button id="setSerialPortButton">Set Serial Port</button>
+				<button id="disconnectButton">Disconnect</button>
+			</div>
+			
             <h1>Welcome to Fm_Sequencer by MIQS!</h1>
             <h2>ファイルを選択してください</h2>
             <input type="file" id="fileInput">
@@ -33,7 +41,7 @@
 
         <div id="player" style="display: none;">
             <h1>Player</h1>
-            <p id="tempoDisplay">Tempo: </p>
+            <!-- <p id="tempoDisplay">Tempo: </p> -->
             <div>
                 <button onclick="switchMain()">ファイル読み込み画面に戻る</button>
             </div>
@@ -42,6 +50,8 @@
         </div>
     </div>
 
+    <script src="queue.js"></script>
+    <script src="sequencer_msg_parser.js"></script>
     <script src="player.js"></script>
     <script src="main.js"></script>
 </body>
