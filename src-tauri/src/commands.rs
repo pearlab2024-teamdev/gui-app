@@ -18,7 +18,7 @@ pub async fn set_serial_port(window: Window, port_name: String, state: State<'_,
         .map_err(|e| format!("Failed to open serial port: {}", e))?;
 
     let mut app_state = state.lock().unwrap();
-    app_state.port = Some(Arc::new(Mutex::new(port)));
+    app_state.port = Some(Arc::new(Mutex::new(Box::new(port) as Box<dyn SerialPort>)));
     window.emit("playback_info", &format!("Serial port opened: {}", port_name)).unwrap();
 
     Ok(())
@@ -31,3 +31,6 @@ pub async fn disconnect_serial_port(window: Window, state: State<'_, Arc<Mutex<A
     window.emit("playback_info", "Serial port disconnected").unwrap();
     Ok(())
 }
+
+// src/main.rs
+// 変更なし
